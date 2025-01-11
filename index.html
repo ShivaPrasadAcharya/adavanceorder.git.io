@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Entry System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="sticky-header">
+        <div class="header-content">
+            <div class="logo">Entry System</div>
+            <div class="index-section" id="indexContainer"></div>
+            <div class="search-section">
+                <input type="text" id="searchInput" placeholder="Search entries...">
+                <div class="search-stats">
+                    <span id="matchCount">0 matches</span>
+                    <button id="prevMatch" disabled><i class="fas fa-chevron-up"></i></button>
+                    <button id="nextMatch" disabled><i class="fas fa-chevron-down"></i></button>
+                </div>
+            </div>
+            <div class="filter-section">
+                <div class="category-filter" id="categoryFilter">
+                    <span>Category:</span>
+                    <!-- Dynamically populated -->
+                </div>
+                <div class="categoryplus-filter" id="categoryplusFilter">
+                    <span>Category+:</span>
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="add-entry-section">
+            <button id="toggleForm" class="toggle-form">+ Add New Entry</button>
+            <div id="entryForm" class="entry-form hidden">
+                <h2>New Entry</h2>
+                <form id="dataEntryForm">
+                    <div class="form-group">
+                        <label for="id">ID:</label>
+                        <input type="text" id="id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <input type="text" id="description" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descriptionplus">Description+ (Optional):</label>
+                        <textarea id="descriptionplus"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Category:</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="showCause"> Show Cause</label>
+                            <label><input type="checkbox" id="interim"> Interim</label>
+                            <label><input type="checkbox" id="priority"> Priority</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoryplus">Category+ (Optional):</label>
+                        <input type="text" id="categoryplus">
+                    </div>
+                    <div class="form-group">
+                        <label for="url">URL (Optional):</label>
+                        <input type="url" id="url">
+                    </div>
+                    <div class="form-group">
+                        <label for="urlname">URL Name (Optional):</label>
+                        <input type="text" id="urlname">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date:</label>
+                        <input type="text" id="date" placeholder="YYYY-MM-DD" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="code">Generated Code:</label>
+                        <div class="code-container">
+                            <textarea id="code" readonly></textarea>
+                            <button type="button" id="copyCode" class="copy-button">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit">Save Entry</button>
+                        <button type="button" id="cancelForm">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="entriesContainer" class="entries-container">
+            <!-- Dynamically populated entries -->
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="data.js"></script>
+    <script src="index.js"></script>
+    <script src="form.js"></script>
+    <script src="search.js"></script>
+    <script src="filter.js"></script>
+    <script src="pdf.js"></script>
+    <script src="footer.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
